@@ -4,17 +4,22 @@ export default async function UsersPage() {
   const users = await getUsers();
 
   return (
-    <div className="max-w-3xl mx-auto py-10 space-y-6">
-      <h1 className="text-2xl font-semibold">Users</h1>
+    <div className="max-w-4xl mx-auto py-10 space-y-6">
+      <div className="flex items-end justify-between">
+        <h1 className="text-2xl font-semibold tracking-tight">Usuários</h1>
+        <span className="text-xs text-gray-500">{users.length} resultados</span>
+      </div>
       {users.length === 0 ? (
-        <p className="text-sm text-gray-500">No users found.</p>
+        <div className="text-center py-16 border rounded-lg">
+          <p className="text-sm text-gray-500">Nenhum usuário encontrado.</p>
+        </div>
       ) : (
-        <ul className="divide-y divide-gray-200 border rounded-md">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {users.map((u) => (
-            <li key={u.id} className="p-4">
-              <div className="font-medium">{u.name}</div>
+            <li key={u.id} className="rounded-lg border p-4 shadow-sm bg-white/50 dark:bg-black/20">
+              <div className="font-medium text-base">{u.name}</div>
               {u.email ? (
-                <div className="text-sm text-gray-500">{u.email}</div>
+                <div className="text-sm text-gray-500 mt-1">{u.email}</div>
               ) : null}
             </li>
           ))}
