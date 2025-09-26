@@ -23,11 +23,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-Br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <header id="main-header" className="sticky top-0 bg-white/80 backdrop-blur-md border-b z-10">
+            <link rel="stylesheet" href="Home" />
+            <link rel="stylesheet" href="Usuarios" />
+            <link rel="stylesheet" href="Sobre" />
+
+            <nav id="main-navigation" className="max-w-5xl mx-auto p-4 flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <a href="/" className="font-bold text-lg">Logo</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <a href="/" className="text-sm font-medium text-gray-600 hover:text-black">Home</a>
+              <a href="/users" className="text-sm font-medium text-gray-600 hover:text-black">Users</a>
+            </div>
+            </nav>
+          </header>
+          <main id="main-content" className="max-w-5xl mx-auto p-4 my-8">
+            <title>
+              <h1>
+
+              </h1>
+
+            </title>
+          </main>
+          <footer id="main-footer" className="border-t bg-gray-100">
+          <div className="max-w-5xl mx-auto p-8 text-center text-sm text-gray-500">
+            <p>© 2025 Meu Projeto Incrível</p>
+          </div>
+            <p>rodapé</p>
+          </footer>
+          {children}
       </body>
     </html>
   );
