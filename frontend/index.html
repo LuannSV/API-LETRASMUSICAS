@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Letras de Músicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <img src="https://i.imgur.com/SmktDIH.png" alt="Logo" class="logo" />
+      <h1>Letras de Músicas</h1>
+    </header>
+
+    <main class="container">
+      <form id="search-form" class="card" autocomplete="off">
+        <div class="field">
+          <label for="banda">Banda/Artista</label>
+          <input id="banda" name="banda" type="text" placeholder="Ex: Coldplay" required />
+        </div>
+        <div class="field">
+          <label for="musica">Música</label>
+          <input id="musica" name="musica" type="text" placeholder="Ex: Yellow" required />
+        </div>
+        <button type="submit" id="btn-buscar">Pesquisar</button>
+      </form>
+
+      <section id="status" class="status" aria-live="polite"></section>
+
+      <section id="resultado" class="card hidden">
+        <h2 id="resultado-titulo" class="resultado-titulo"></h2>
+        <pre id="letra" class="letra"></pre>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Feito com ❤️ usando a API `lyrics.ovh`</small>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+  </html>
+
