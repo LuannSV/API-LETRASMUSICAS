@@ -1,5 +1,5 @@
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
 type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 
@@ -7,7 +7,21 @@ export async function apiFetch<T = Json>(
   path: string,
   init: RequestInit = {}
 ): Promise<T> {
-  const url = path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
+  let url: string;
+  
+  if (path.startsWith("http")) {
+    url = path;
+  } else if (API_BASE_URL) {
+    url = `${API_BASE_URL}${path}`;
+  } else {
+    // Para requisições internas no Next.js
+    const baseUrl = typeof window !== 'undefined' 
+      ? window.location.origin 
+      : process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}`
+        : 'http://localhost:3000';
+    url = `${baseUrl}${path}`;
+  }
 
   const headers = new Headers(init.headers);
   if (!headers.has("Content-Type") && init.body) {
@@ -46,6 +60,6 @@ export type User = {
 };
 
 export async function getUsers(): Promise<User[]> {
-  return apiFetch<User[]>("/users");
+  return apiFetch<User[]>("/api/users");
 }
 
