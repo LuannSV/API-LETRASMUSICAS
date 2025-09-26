@@ -9,6 +9,7 @@ export default function Header() {
   const navItems = [
     { href: "/", label: "Início" },
     { href: "/lyrics", label: "Buscar Letras" },
+    { href: "/favorites", label: "Favoritos" },
     { href: "/users", label: "Usuários" },
   ];
 
