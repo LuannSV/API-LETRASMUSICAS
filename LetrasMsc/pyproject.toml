@@ -1,18 +1,23 @@
-[project]
+# Arquivo: LetrasMsc/pyproject.toml
+
+# Mantenha apenas esta seção para a configuração do projeto
+[tool.poetry]
 name = "letrasmsc"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Your Name",email = "you@example.com"}
-]
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "requests (>=2.32.5,<3.0.0)",
-    "streamlit (>=1.50.0,<2.0.0)"
-]
+authors = ["Your Name <you@example.com>"]
+readme = "../README.md"
+# Esta linha é a mais importante para corrigir o erro de instalação
+package-mode = false
 
+# Unificamos todas as suas dependências aqui
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0" # Compatível com Python 3.11 ou superior
+flask = ">=3.0.0,<4.0.0"
+flask-cors = ">=4.0.0,<5.0.0"
+requests = ">=2.32.5,<3.0.0"
 
+# Esta seção é necessária para o Poetry funcionar
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

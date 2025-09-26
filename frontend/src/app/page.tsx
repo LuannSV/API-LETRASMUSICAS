@@ -1,48 +1,49 @@
+// 1. A importação que faltava foi adicionada aqui
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-full">
-      <section className="relative overflow-hidden rounded-[var(--radius-lg)] border bg-card p-8 sm:p-12">
-        <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Letras de Músicas</h1>
-          <p className="mt-3 text-base text-muted-foreground">
-            Busque letras por artista e música. Veja também uma lista de usuários de exemplo.
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Link
-              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium shadow-sm hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-ring)]"
-              href="/users"
-            >
-              Ver usuários
-            </Link>
-            <a
-              className="inline-flex items-center justify-center rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-muted"
-              href="https://lyrics.ovh/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              API de letras
-            </a>
-          </div>
-        </div>
-        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-2xl" />
-      </section>
+    // 2. Layout simplificado com Flexbox. É mais fácil de entender e manter.
+    // 'flex-col' empilha os itens, e 'min-h-screen' garante que o layout ocupe a tela toda.
+    <div className="flex min-h-screen flex-col items-center justify-center p-8 font-sans">
 
-      <section className="mt-10 grid gap-4 sm:grid-cols-3">
-        <div className="rounded-md border bg-card p-4">
-          <h3 className="font-semibold">Rápido</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Next.js 15 com streaming e layouts.</p>
+      {/* O 'flex-grow' faz esta seção principal se expandir e empurrar o rodapé para baixo */}
+      <main className="flex flex-grow flex-col items-center justify-center gap-12">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-slate-800 sm:text-6xl">
+            Bem-vindo ao Meu Projeto
+          </h1>
+          <p className="mt-4 text-lg text-slate-600">
+            Um ponto de partida limpo para começar a construir.
+          </p>
         </div>
-        <div className="rounded-md border bg-card p-4">
-          <h3 className="font-semibold">Estilizado</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Design tokens com Tailwind v4.</p>
+
+        {/* 3. Seção de links principais, mais clara e focada */}
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <Link
+            href="/users" // Apontando para uma página interna, usando o componente Link
+            className="rounded-lg bg-slate-900 px-6 py-3 text-center font-medium text-white transition-colors hover:bg-slate-700"
+          >
+            Ver Usuários
+          </Link>
+          <a
+            href="https://github.com/LuannSV/API-LETRASMUSICAS" // Link externo, usando a tag <a>
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-slate-300 px-6 py-3 text-center font-medium text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-100"
+          >
+            Ver no GitHub
+          </a>
         </div>
-        <div className="rounded-md border bg-card p-4">
-          <h3 className="font-semibold">Tipado</h3>
-          <p className="mt-1 text-sm text-muted-foreground">TypeScript para segurança e DX.</p>
-        </div>
-      </section>
+      </main>
+
+      {/* 4. Rodapé mais simples */}
+      <footer className="text-center text-sm text-slate-500">
+        <p>
+          Desenvolvido com Next.js e Tailwind CSS.
+        </p>
+      </footer>
     </div>
   );
 }

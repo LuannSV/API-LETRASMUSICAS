@@ -95,7 +95,21 @@ export type User = {
   email?: string;
 };
 
+export type LyricsResponse = {
+  banda: string;
+  musica: string;
+  letra: string;
+};
+
 export async function getUsers(): Promise<User[]> {
   return apiFetch<User[]>("/users");
+}
+
+export async function getLyrics(banda: string, musica: string): Promise<LyricsResponse> {
+  const params = new URLSearchParams({
+    banda: banda,
+    musica: musica
+  });
+  return apiFetch<LyricsResponse>(`/lyrics?${params}`);
 }
 
